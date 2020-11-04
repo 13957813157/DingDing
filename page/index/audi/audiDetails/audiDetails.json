@@ -1,0 +1,9 @@
+{
+   "usingComponents": {
+    "collapse": "mini-ali-ui/es/collapse/index",
+    "collapse-item": "mini-ali-ui/es/collapse/collapse-item/index",
+    "am-icon": "mini-ali-ui/es/am-icon/index",
+     "container": "mini-ali-ui/es/container/index",
+   "title": "mini-ali-ui/es/title/index"
+  }
+}

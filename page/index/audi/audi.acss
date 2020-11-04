@@ -1,0 +1,76 @@
+.table {
+ border: 2px solid rgb(43, 119, 155);
+}
+.tr {
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ height: 1rem;
+ align-items: center;
+}
+.td { 
+ width:100%;
+ justify-content: center;
+ text-align: center;
+}
+.bg-w{
+ background: snow;
+}
+.bg-g{
+ background: #E6F3F9;
+   
+}
+.th {
+  font-weight:bold;
+ width: 100%;
+ justify-content: center;
+ background: rgb(43, 119, 155);
+ color: black;
+ display: flex;
+ height: 1rem;
+ align-items: center;
+}
+ scroll-view {
+  width: 100%;
+  white-space: nowrap;  
+ }
+ .divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}
+
+.date-radio {
+  padding: 26rpx;
+}
+
+.date-radio label + label {
+  margin-left: 20rpx;
+}
+
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.row-title {
+  flex: 1;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  font-size: 34rpx;
+  color: #000;
+}
+
+.row-extra {
+  flex-basis: initial;
+  font-size: 32rpx;
+  color: #888;
+}
+
+.row-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}

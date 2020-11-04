@@ -1,0 +1,139 @@
+.scroll-view_H {
+  white-space: nowrap;
+  display:flex;
+}
+ 
+ 
+.table {
+ 
+ border: 0px solid black;
+  border-collapse: collapse;
+   
+ 
+}
+.tr { 
+  border:0px solid black;
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ height: 1rem;
+ align-items: center;
+  border-bottom:solid 1px grey;
+}
+.td { 
+  border: 1px;
+ width:100%;
+ justify-content: center;
+ text-align: center;
+}
+.bg-w{
+ background: snow;
+}
+.bg-g{
+ background: #E6F3F9;
+   
+}
+.th {
+  font-weight:bold;
+ width: 100%;
+ justify-content: center;
+ background: white;
+ color: black;
+ display: flex;
+ height: 1rem;
+ align-items: center;
+ font-size: large;
+}
+ 
+ .divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}
+
+.date-radio {
+  padding: 26rpx;
+}
+
+.date-radio label + label {
+  margin-left: 20rpx;
+}
+
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.row-title {
+  flex: 1;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  font-size: 34rpx;
+  color: #000;
+}
+
+.row-extra {
+  flex-basis: initial;
+  font-size: 32rpx;
+  color: #888;
+}
+
+.row-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.tab-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+  /* 如果 swipeable="{{true}}"，需要增加 height */
+  /* height: 350px; */
+  /* 为了体现 stickyBar 的作用而增加的 tab-content 的高度 */
+  height: 100vh;
+}
+
+.detailContainer{
+  border-color: rgb(110, 108, 235);
+  height: 100%;
+  margin: 1px;
+}
+
+
+.table1 {
+ border: 2px solid rgb(43, 119, 155);
+}
+.tr1 {
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ height: 1rem;
+ align-items: center;
+}
+.td1 { 
+ width:100%;
+ justify-content: center;
+ text-align: center;
+}
+.bg-w1{
+ background: snow;
+}
+.bg-g1{
+ background: #E6F3F9;
+   
+}
+.th1 {
+  font-weight:bold;
+ width: 100%;
+ justify-content: center;
+ background: rgb(43, 119, 155);
+ color: black;
+ display: flex;
+ height: 1rem;
+ align-items: center;
+}

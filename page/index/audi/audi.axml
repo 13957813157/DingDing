@@ -1,0 +1,23 @@
+   <view style="margin-top: 10px;"></view>
+   <scroll-view class="scroll-view" scroll-x="true">
+          <view class="table">
+            <view class="tr bg-w">
+              <view class="th">业务申请号</view>
+              <view class="th">客户名称</view>  
+                     
+            </view>
+        <block a:for="{{info}}" >
+            <view class="tr">
+              <view class="td"><navigator  url="/page/index/audi/audiDetails/audiDetails?title={{item.bizid}}" hover-class="navigator-hover">  {{item.ObjectNo}} </navigator></view>
+              <view class="td">{{item.CustomerName}}</view>  
+                          
+            </view>
+            <view class="form-line" />
+        </block>
+        </view>
+      </scroll-view>
+          
+    
+ 
+ 
+ 

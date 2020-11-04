@@ -1,0 +1,140 @@
+.scroll-view_H {
+  white-space: nowrap;
+  display:flex;
+}
+ 
+.table {
+ border: 0px solid black;
+  border-collapse: collapse;
+ 
+}
+.tr { 
+  border:0px solid black;
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ height: 1rem;
+ align-items: center;
+  border-bottom:solid 1px grey;
+}
+.td { 
+  border: 1px;
+ width:100%;
+ justify-content: center;
+ text-align: center;
+}
+.bg-w{
+ background: snow;
+}
+.bg-g{
+ background: #E6F3F9;
+   
+}
+.th {
+  font-weight:bold;
+ width: 100%;
+ justify-content: center;
+ background: white;
+ color: black;
+ display: flex;
+ height: 1rem;
+ align-items: center;
+}
+
+ .divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}
+
+.date-radio {
+  padding: 26rpx;
+}
+
+.date-radio label + label {
+  margin-left: 20rpx;
+}
+ 
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.row-title {
+  flex: 1;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  font-size: 34rpx;
+  color: #000;
+}
+
+.row-extra {
+  flex-basis: initial;
+  font-size: 32rpx;
+  color: #888;
+}
+
+.row-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.tab-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+  /* 如果 swipeable="{{true}}"，需要增加 height */
+  /* height: 350px; */
+  /* 为了体现 stickyBar 的作用而增加的 tab-content 的高度 */
+  height: 100vh;
+}
+
+.item-content {
+  padding: 14px 16px;
+  font-size: 17px;
+  color: #333;
+  line-height: 24px;
+}
+
+.content1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: blue;
+  display: flex;
+  /* text-align: left; */
+  font-family: "微软雅黑","黑体","宋体";
+}
+
+.container {
+ background: #F5F5F5;
+ padding: 24rpx;
+ height: 100%;
+}
+.container-item {
+ margin-bottom: 24rpx;
+}
+.footer {
+ color: #333;
+ margin-top: 24rpx;
+}
+.item {
+ background: #eeeeee;
+ text-align: center;
+ height: 200rpx;
+}
+.grid-item {
+ background: #eeeeee;
+ text-align: center;
+}
+
+.text{
+  /* font-weight:bold; */
+}
+
+ 
+

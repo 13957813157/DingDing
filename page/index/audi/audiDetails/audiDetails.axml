@@ -1,0 +1,458 @@
+<form onSubmit="formSubmit" onReset="formReset">
+  <view style="margin-top: 10px;"></view>
+  <view hidden="true" class="td">
+    <input class="input" id="title" name="title" value="{{title}}"></input>
+  </view>
+  
+  <view class="page-section">
+    
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="BaSerialNo" name="BaSerialNo"  decode={{true}}>
+     流水单号:&nbsp;&nbsp;&nbsp;{{info.content.BaSerialNo}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+         <text class="text" id="CustomerName" name="CustomerName" decode={{true}}>
+         客户名称:&nbsp;&nbsp;&nbsp;
+       <!-- <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 90%"> -->
+        {{info.content.CustomerName}} 
+        <!-- </scroll-view> -->
+       </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="BusinessTypeName" name="BusinessTypeName" decode={{true}}>
+        业务品种:&nbsp;&nbsp;&nbsp;{{info.content.BusinessTypeName}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="BusinessCurrency" name="BusinessCurrency" decode={{true}}>
+        业务币种:&nbsp;&nbsp;&nbsp;{{info.content.BusinessCurrency}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="CycleFlag" name="CycleFlag"  decode={{true}}>
+        是否循环:&nbsp;&nbsp;&nbsp;{{info.content.CycleFlag}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="MonthTime" name="MonthTime" decode={{true}} >
+        期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  限:&nbsp;&nbsp;&nbsp;{{info.content.MonthTime}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" a:if="{{info.kind == 'CreditApply'}}" decode={{true}}>
+        授信金额:&nbsp;&nbsp;&nbsp;{{info.content.BusinessSum}}
+        </text>
+        <text class="text" a:if="{{info.kind == 'BusinessContract'}}" decode={{true}}>
+        合同金额:&nbsp;&nbsp;&nbsp;{{info.content.BusinessSum}}
+        </text>
+        <text class="text" a:if="{{info.kind == 'PutOutApply'}}" decode={{true}}>
+        放款金额:&nbsp;&nbsp;&nbsp;{{info.content.BusinessSum}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text"  decode={{true}}>
+        敞口金额:&nbsp;&nbsp;&nbsp;{{info.content.ExposureSum}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text"   decode={{true}}>
+        担保方式:&nbsp;&nbsp;&nbsp;{{info.content.VouchType}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="CustomerManagerOrgName" name="CustomerManagerOrgName" decode={{true}}>
+        经营单位:&nbsp;&nbsp;&nbsp;{{info.content.CustomerManagerOrgName}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <view class="form-row-content">
+        <text class="text" id="CustomerManagerName" name="CustomerManagerName" decode={{true}}>
+        客户经理:&nbsp;&nbsp;&nbsp;{{info.content.CustomerManagerName}}
+        </text>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="text" a:if="{{info.kind != 'CreditApply'}}">
+      <view class="form-row">
+        <view class="form-row-content">
+          <text class="text" id="PutOutDate" name="PutOutDate" decode={{true}}>
+        合同起始:&nbsp;&nbsp;&nbsp;{{info.content.PutOutDate}}
+          </text>
+        </view>
+      </view>
+      <view class="form-line"></view>
+      <view class="form-row">
+        <view class="form-row-content">
+          <text class="text" id="Maturity" name="Maturity" decode={{true}}>
+        合同到期:&nbsp;&nbsp;&nbsp;{{info.content.Maturity}}
+          </text>
+        </view>
+      </view>
+      <view class="form-line"></view>
+    </view>
+  </view>
+  <collapse className="demo-collapse" collapseKey="collapse1">
+    <collapse-item header="展示详情" itemKey="item-22" isOpen="{{false}}" collapseKey="collapse1">
+      <view className="container">
+        <view a:if={{info.guarantyList!=null}}> 
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">担保详情
+              </view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">担保方式</view>
+                <view class="th">担保人</view>
+                <view class="th">金额</view>
+                <view class="th">币种</view>
+              </view>
+              <block a:for="{{info.guarantyList}}">
+                <view class="tr">
+                  <view class="td">{{item.GuarantyTypeName}}</view>
+                  <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+                    <view class="td">{{item.GuarantyName}}</view>
+                  </scroll-view>
+                  <view class="td">{{item.GuarantyValue}}</view>
+                  <view class="td">{{item.GuarantyCurrency}}</view>
+                </view>
+                <!--<view class="form-line" /> -->
+              </block>
+            </view>
+          </container>
+        </view>
+        </container>
+        <container className="container-item">
+          <title slot="header" hasLine="true">
+            <view style="text-align:center">
+    还款方式
+            </view></title>
+          <view class="table">
+            <view class="tr bg-w">
+              <view class="th">还款方式</view>
+              <view class="th">首次发生时间</view>
+            </view>
+            <block a:for="{{info.RPTList}}">
+              <view class="tr">
+                <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+                  <view class="td">{{item.RPTTermTypeName}}</view>
+                </scroll-view>
+                <view class="td">{{item.NewRPTTermTypeName}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </block>
+          </view>
+        </container>
+        <view a:if={{info.rate!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">利率信息</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">利率类型</view>
+                <view class="th">最终执行利率</view>
+              </view>
+              <view class="tr">
+                <view class="td">{{info.rate.LoanRateTerm}}</view>
+                <view class="td">{{info.rate.BusinessRate}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+        <view a:if={{info.BailInfo!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">保证金比例</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">保证金比例</view>
+                <view class="th">保证金金额</view>
+                <view class="th">币种</view>
+              </view>
+              <view class="tr">
+                <view class="td">{{info.BailInfo.BailRatio}}</view>
+                <view class="td">{{info.BailInfo.BailSum}}</view>
+                <view class="td">{{info.BailInfo.BailCurrencyName}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+        <view a:if={{info.evaluate!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">客户评级</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">系统评分</view>
+                <view class="th">系统评估</view>
+                <view class="th">人工评定</view>
+              </view>
+              <view class="tr">
+                <view class="td">{{info.evaluate.SystemScore}}</view>
+                <view class="td">{{info.evaluate.SystemResult}}</view>
+                <view class="td">{{info.evaluate.CognResult}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+        <view a:if={{info.classify!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">贷前资产分类</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">系统评分</view>
+                <view class="th">系统评估</view>
+              </view>
+              <view class="tr">
+                <view class="td">{{info.classify.ModelCaResult}}</view>
+                <view class="td">{{info.classify.CognCaResult}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+        <view a:if={{info.PutOutInfo!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">出账信息</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">业务品种</view>
+                <view class="th">币种</view>
+                <view class="th">放款金额</view>
+                <view class="th">敞口金额</view>
+              </view>
+              <view class="tr">
+                <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+                  <view class="td">{{info.PutOutInfo.BusinessTypeName}}</view>
+                </scroll-view>
+                <view class="td">{{info.PutOutInfo.CurrencyName}}</view>
+                <view class="td">{{info.PutOutInfo.BusinessSum}}</view>
+                <view class="td">{{info.PutOutInfo.ExposureSum}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+        <view a:if={{info.sealApply!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">用印信息</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">信贷合同章个数</view>
+                <view class="th">法人章个数</view>
+                <view class="th">用印送达单位</view>
+              </view>
+              <view class="tr">
+                <view class="td">{{info.sealApply.CreditContract}}</view>
+                <view class="td">{{info.sealApply.LegalPerson}}</view>
+                <view class="td">{{info.sealApply.ServiceUnit}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+        <view a:if={{info.QuotaContractInfo!=null}}>
+          <container className="container-item">
+            <title slot="header" hasLine="true">
+              <view style="text-align:center">额度信息</view></title>
+            <view class="table">
+              <view class="tr bg-w">
+                <view class="th">业务品种</view>
+                <view class="th">币种</view>
+                <view class="th">额度金额</view>
+                <view class="th">敞口金额</view>
+              </view>
+              <view class="tr">
+                <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+                  <view class="td">{{info.QuotaContractInfo.BusinessTypeName}}</view>
+                </scroll-view>
+                <view class="td">{{info.QuotaContractInfo.CurrencyName}}</view>
+                <view class="td">{{info.QuotaContractInfo.BusinessSum}}</view>
+                <view class="td">{{info.QuotaContractInfo.ExposureSum}}</view>
+              </view>
+              <!--<view class="form-line" /> -->
+            </view>
+          </container>
+        </view>
+      </view>
+    </collapse-item>
+  </collapse>
+  <view style="margin-top: 10px;"></view>
+  <!--<view class="demo-title">查看审批意见</view> -->
+  <collapse className="demo-collapse" collapseKey="collapse2">
+    <collapse-item header="查看审批意见" itemKey="item-2" collapseKey="collapse2">
+      <view class="item-content">
+        <block a:for="{{info.opinion}}">
+          <view class="page-section">
+            <view class="form-row">
+              <view class="form-row-content">
+                <view class="text"></view>
+          阶段名称:{{item.PhaseName}}
+              </view>
+            </view>
+            <view class="form-line"></view>
+            <view class="form-row">
+              <view class="form-row-content">
+                <view class="text"></view>
+          处理人:{{item.UserName}}
+              </view>
+            </view>
+            <view class="form-line"></view>
+            <view class="form-row">
+              <view class="form-row-content">
+                <view class="text"></view>
+          机构:{{item.OrgName}}
+              </view>
+            </view>
+            <view class="form-line"></view>
+            <view a:if="{{item.advice.length>=10}}">
+              <view class="page-section">
+                <view class="page-section-title" style="text-align:left">意见:</view>
+                <view class="page-section-demo">
+                  <textarea disabled='true' maxlength='-1' auto-height value="{{item.advice}}"></textarea>
+                </view>
+              </view>
+            </view>
+            <view a:if="{{item.advice.length<10}}">
+              <view class="form-row">
+                <view class="form-row-content">
+                  <view class="text"></view>
+          意见:{{item.advice}}
+                </view>
+              </view>
+            </view>
+            <view class="form-line"></view>
+          </view>
+          <view style="margin-top: 30px;"></view>
+        </block>
+      </view>
+    </collapse-item>
+  </collapse>
+  <view style="margin-top: 10px;"></view>
+  <view class="page-section">
+    <view class="page-section-title" style="text-align:center">
+      <view class="text">
+    <am-icon type="edit_" color="tomato"/>  审批意见
+      </view></view>
+    <view class="page-section-demo">
+      <textarea onBlur="bindTextAreaBlur" maxlength='-1' auto-height id="advice" name="advice" value="{{info.content.advice}}"></textarea>
+    </view>
+  </view>
+  <view a:if="{{info.content.isShowAll == 'true' }}">
+    <view class="page-section">
+      <view class="page-section-title" style="text-align:center">
+        <view class="text"><am-icon type="edit_" color="red"/>出账前需要落实的特殊条件</view></view>
+      <view class="page-section-demo">
+        <textarea onBlur="bindTextAreaBlur" auto-height maxlength='-1' id="condition" name="condition" value="{{info.content.condition}}"></textarea>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title" style="text-align:center">
+        <view class="text"><am-icon type="edit_" color="red"/>贷款管理特别要求</view></view>
+      <view class="page-section-demo">
+        <textarea onBlur="bindTextAreaBlur" auto-height maxlength='-1' id="requests" name="requests" value="{{info.content.requests}}"></textarea>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title" style="text-align:center">
+        <view class="text"><am-icon type="edit_" color="red"/>备注</view></view>
+      <view class="page-section-demo">
+        <textarea onBlur="bindTextAreaBlur" auto-height maxlength='-1' id="remarks" name="remarks" value="{{info.content.remarks}}"></textarea>
+      </view>
+    </view>
+  </view>
+  <view a:if="{{info.kind == 'CreditApply' }}">
+    <view class="page-section">
+      <view class="form-row">
+      <am-icon type="money" color="peachpuff"/>
+         <view class="form-row-label">授信金额：</view>
+        <view class="form-row-content">
+          <input name="BusinessSum" id="BusinessSum" class="input" value="{{info.content.BusinessSum}}"></input>
+        </view>
+      </view>
+      <view class="form-line"></view>
+      <view class="form-row">
+       <am-icon type="money" color="peachpuff"/>
+        <view class="form-row-label"> 敞口金额：</view>
+        <view class="form-row-content">
+          <input name="ExposureSum" id="ExposureSum" class="input" value="{{info.content.ExposureSum}}"></input>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="pv-container">
+    <view class="pv-left">
+      <picker-view value="{{value}}" onChange="onChange" >
+        <picker-view-column>
+          <block a:for="{{point}}">
+            <view>{{item}} </view>
+          </block>
+        </picker-view-column>
+        <picker-view-column>
+          <block a:for="{{action[value[0]]}}">
+            <view>{{item.UserName}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+  <!-- <view class="page-section-btns">
+    <view>
+      <button type="primary" size="mini" formType="submit">提交</button>
+    </view>
+    <view>
+      <button type="ghost" size="mini" formType="reset">退回上一步</button>
+    </view>
+  </view> -->
+   <view style="margin-top: 30px;"></view>
+   <view class="page-section">
+  
+    <view class="page-section-demo">
+      
+          <button type="primary"  shape="capsule"  loading  formType="submit" disabled="{{isdisabled}}">提交</button>
+        <button type="warn"   formType="reset" disabled="{{isdisabled}}"><am-icon type="left" color="white"/>退回上一步</button>
+      
+    </view>
+  </view>
+ 
+     
+     
+     
+    
+</form>

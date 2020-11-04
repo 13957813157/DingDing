@@ -1,0 +1,118 @@
+</view>
+<tabs tabs="{{tabs2}}" swipeable="{{false}}" tabsName="activeTab2" onTabClick="handleTabClick" onChange="handleTabChange" activeTab="{{activeTab2}}" capsule="{{true}}" hasSubTitle="{{false}}" tabBarUnderlineWidth="20px" stickyBar="{{true}}">
+  <block a:for="{{tabs2}}">
+    <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab2}}" a:if="{{index === 0}}">
+      <!--<view style="margin-top: 10px;"></view>height:100%; -->
+      <view class="detailContainer">
+        <scroll-view class="scroll">
+          <view class="table">
+            <view class="tr bg-w">
+              <view class="th">业务申请号</view>
+              <view class="th">客户名称</view>
+            </view>
+            <block a:for="{{info}}">
+              <view class="tr">
+                <view class="td">
+                  <navigator url="/page/index/audi/audiDetails/audiDetails?title={{item.bizid}}" hover-class="navigator-hover">
+                    <am-icon type="pen_" color="brown"/> {{item.ObjectNo}}</navigator></view>
+                <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 80%">
+                  <view class="td">
+                    <navigator url="/page/index/audi/audiDetails/audiDetails?title={{item.bizid}}" hover-class="navigator-hover">{{item.CustomerName}}</navigator>
+                  </view>
+                </scroll-view>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+    </tab-content>
+    <tab-content key="{{index}}" tabId="{{index}}" activeTab="{{activeTab2}}" a:elif="{{index === 1}}">
+      <view class="detailContainer">
+        <form onSubmit="formSubmit" onReset="formReset">
+          <!--<view style="margin-top: 10px;margin-bottom:10px;"></view>height:100%; -->
+          <view hidden="true" class="td">
+            <input class="input" id="OccurTypeName" name="OccurTypeName" value="{{array[pickindex]}}"/></view>
+          <view class="page-section">
+            <view class="form-row">
+              <icon class="section-3" type="search" size="16"></icon>
+              <view class="form-row-content">
+                <input class="input" id="CustomerName" name="CustomerName" placeholder="客户名称" />
+              </view>
+            </view>
+            <view class="form-line" />
+            <view class="form-row">
+              <icon class="section-3" type="search" size="16"></icon>
+              <view class="form-row-content">
+                <input class="input" id="MrchFlg" name="MrchFlg" placeholder="商户标识" />
+              </view>
+            </view>
+            <view class="form-line" />
+            <view class="form-row">
+              <icon class="section-3" type="search" size="16"></icon>
+              <view class="form-row-content">
+                <input class="input" id="BusinessTypeName" name="BusinessTypeName" placeholder="业务品种" />
+              </view>
+            </view>
+            <view class="form-line" />
+            <picker onChange="bindPickerChange" value="{{pickindex}}" range="{{array}}">
+              <view class="row">
+                <icon class="section-3" type="search" size="16"></icon>
+                <view class="row-title">发生类型:  {{array[pickindex]}}</view>
+              </view>
+            </picker>
+            <view class="page-section-btns">
+              <view>
+                <button type="ghost" size="mini" formType="reset">重置</button></view>
+              <view>
+                <button type="primary" size="mini" formType="submit">查询</button></view>
+            </view>
+            <!--<button type="primary" formType="submit">查询</button>-->
+          </view>
+        </form>
+        <block a:for="{{searchinfo}}">
+          <view class="table1">
+            <view class="tr bg-w1">
+              <view class="th1">业务申请号</view>
+              <view class="th1">客户名称</view>
+            </view>
+            <view class="tr1">
+              <view class="td1">{{item.ObjectNo}}</view>
+              <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 90%">
+                <view class="td1">{{item.CustomerName}}</view>
+              </scroll-view>
+            </view>
+            <view class="tr bg-w1">
+              <view class="th1">流程名称</view>
+              <view class="th1">阶段名称</view>
+            </view>
+            <view class="tr1">
+              <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 90%">
+                <view class="td1">{{item.FlowName}}</view>
+              </scroll-view>
+              <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 90%">
+                <view class="td1">{{item.PhaseName}}</view>
+              </scroll-view>
+            </view>
+            <view class="tr bg-w1">
+              <view class="th1">流程发起人</view>
+              <view class="th1">流程发起人机构</view>
+              <view class="th1">流程发起时间</view>
+            </view>
+            <view class="tr1">
+              <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 90%">
+                <view class="td1">{{item.UserName}}</view>
+              </scroll-view>
+              <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 90%">
+                <view class="td1">{{item.OrgName}}</view>
+              </scroll-view>
+              <view class="td1">{{item.InputDate}}</view>
+            </view>
+          </view>
+          <view class="tr1">
+            <view class="td1"></view>
+          </view>
+        </block>
+      </view>
+    </tab-content>
+  </block>
+</tabs>
